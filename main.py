@@ -26,14 +26,14 @@ async def get_patients() -> list[Patient]:
 async def create_patients(patient: Patient) -> None:
     patients.append(patient)
 
-@app.put("/patients{first_name}")
+@app.put("/patients/{first_name}")
 async def update_patients(first_name: str, updated_patient: Patient) -> None:
     for i, patient in enumerate(patients):
         if patient.first_name == first_name:
             patients[i] = updated_patient
             return
 
-@app.delete("/patients{first_name}")
+@app.delete("/patients/{first_name}")
 async def delete_patients(first_name: str) -> None:
     for i, patient in enumerate(patients):
         if patient.first_name == first_name:
